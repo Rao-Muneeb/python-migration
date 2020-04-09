@@ -56,7 +56,7 @@ jmespath==0.9.4
 kafka-python==2.0.1
 kombu==3.0.33
 lexicon==0.2.0
-lxml==4.1.1
+lxml==4.5.0
 marathon==0.8.4
 MarkupSafe==1.1.1
 maxminddb==1.5.2

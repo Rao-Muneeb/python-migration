@@ -68,16 +68,20 @@ install_fork_dependencies() {
         git clone https://github.com/andresdouglas/django-tastypie-nonrel.git
         cd django-tastypie-nonrel; python setup.py install; cd ..
 
+	echo "[Info] Cloning 'python-digest'"
+	git clone https://github.com/onaio/python-digest.git
+	cd python-digest; python setup.py install; cd ..
+
 	if [ "$#" -gt 0 ] && [ "$1" = "python2" ]; then
 	#	echo "[Info] Cloning 'django'..."
 	#	git clone https://github.com/django-nonrel/django.git
 	#	cd django; python setup.py install; cd ..
 
-		echo "[Info] Cloning 'djangotoolbox'..."
-		git clone https://github.com/django-nonrel/djangotoolbox.git
-		cd djangotoolbox; python setup.py install; cd ..
+	#	echo "[Info] Cloning 'djangotoolbox'..."
+	#	git clone https://github.com/django-nonrel/djangotoolbox.git
+	#	cd djangotoolbox; python setup.py install; cd ..
 
-		echo "[Info] Cloning 'mongodb-engine'..."
+		echo "[Info] Cloning 'django-mongodb-engine'..."
 		git clone https://github.com/django-nonrel/mongodb-engine.git
 		cd mongodb-engine; python setup.py install; cd ..
 

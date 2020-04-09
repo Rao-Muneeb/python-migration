@@ -26,6 +26,7 @@ django-globals==0.2.1
 django-socketio==0.3.9
 django-tastypie==0.10.0
 django-uuidfield==0.4.0
+djangotoolbox==1.8.0
 dnspython==1.16.0
 docutils==0.16
 EasyProcess==0.2.9

@@ -17,16 +17,15 @@ activate_env() {
 # Below function creates virtual environment using 'virtualenv' script
 create_env() {
 	local dir="$(cd $(dirname "$0"); pwd)"
+	local python=$( which "$1" )
 
-	if [ "$1" = "python2" ]; then
-		local python=$( which python )
+	if [[ "$1" = "python2"* ]]; then
 		if [ -n "$3" ]; then
 			local requirement_file=$3
 		else
 			local requirement_file="$dir/py2_requirements.txt" 
 		fi
 	else
-		local python=$( which python3 )
 		if [ -n "$3" ]; then
 			local requirement_file=$3
 		else
@@ -170,7 +169,7 @@ done
 
 if [ -z "$PYTHON_VER" ] && [ -z "$VIR_ENV_PATH" ]; then
 	echo "[Error] -v (--version) or -p (--path) options not given..."
-elif [[ "$PYTHON_VER" = "python2" || "$PYTHON_VER" = "python3" ]] && [[ -n "$VIR_ENV_PATH" ]]; then
+elif [[ "$PYTHON_VER" = "python2"* || "$PYTHON_VER" = "python3"* ]] && [[ -n "$VIR_ENV_PATH" ]]; then
 	if [ -n "$DEP_REQ_FILE" ]; then
 		echo "create_env $PYTHON_VER $VIR_ENV_PATH $DEP_REQ_FILE"
 		create_env $PYTHON_VER $VIR_ENV_PATH $DEP_REQ_FILE

@@ -71,7 +71,7 @@ install_fork_dependencies() {
 	git clone https://github.com/onaio/python-digest.git
 	cd python-digest; python setup.py install; cd ..
 
-	if [ "$#" -gt 0 ] && [ "$1" = "python2" ]; then
+	if [[ "$#" -gt 0 ]] && [[ "$1" = "python2"* ]]; then
 	#	echo "[Info] Cloning 'django'..."
 	#	git clone https://github.com/django-nonrel/django.git
 	#	cd django; python setup.py install; cd ..

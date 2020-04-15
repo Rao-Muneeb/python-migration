@@ -48,7 +48,10 @@ create_env() {
 	echo "[Info] Activation Done..."
 	add_elastica_packages_path
 	install_pypi_dependencies $requirement_file
-	install_fork_dependencies $1
+
+	if [ "$FORK_DEP" = true ]; then
+		install_fork_dependencies $1
+	fi
 
 }
 
@@ -103,7 +106,11 @@ add_elastica_packages_path() {
 	local python_ver=$( python -c 'import sys; version=sys.version_info[:2]; print("{0}.{1}".format(*version))' )
 	local file_path="$( pwd )/lib/python$python_ver/site-packages/el_packages_path.pth"
 
+	# Check whether OS is linux or not
+	cat /etc/os-release > /dev/null 2>&1
+
 	if [ -n "$USER" ]; then
+		if [ "$?" != 0 ]; then		# when OS is Mac
 
 cat > $file_path << END_TEXT
 /Users/$USER/milkyway/common/auth_2fa
@@ -115,8 +122,20 @@ cat > $file_path << END_TEXT
 /Users/$USER/milkyway/connectors
 /Users/$USER/milkyway/apiserver
 END_TEXT
+		else		# OS is linux based and User is already created
+cat > $file_path << END_TEXT
+/home/$USER/milkyway/common/auth_2fa
+/home/$USER/milkyway/common/hadoop
+/home/$USER/milkyway/common/emailservice
+/home/$USER/milkyway/common/pyElastica
+/home/$USER/milkyway/discovery/common/python/
+/home/$USER/milkyway/discovery/common/python/core
+/home/$USER/milkyway/connectors
+/home/$USER/milkyway/apiserver
+END_TEXT
+		fi
 
-	else
+	else		# OS is linux based but no User is created
 cat > $file_path << END_TEXT
 /home/madmin/milkyway/common/auth_2fa
 /home/madmin/milkyway/common/hadoop
@@ -131,6 +150,7 @@ END_TEXT
 	fi
 }
 
+FORK_DEP=true
 
 while [ "$#" -gt 0 ]; do
 	key=$1
@@ -148,6 +168,10 @@ while [ "$#" -gt 0 ]; do
 			DEP_REQ_FILE=$2
 			shift; shift
 			;;
+		--no-fork-dep)
+			FORK_DEP=false
+			shift
+			;;
 		*)
 			echo "[Error] Invalid Arguments given..."
 			echo "-----------------------------------------------------------------------------"
@@ -156,6 +180,7 @@ while [ "$#" -gt 0 ]; do
 			echo "-v | --version : Python version either 'python2' or 'python3'    (Required)"
 			echo "-p | --path    : Name/Path for Python Virtual Environment        (Required)"
 			echo "-f | --file    : Path for PyPi Dependencies requirement file     (Optional)"
+			echo "--no-fork-dep  : Would not install Forked Dependencies	       (Optional)"
 			echo "-----------------------------------------------------------------------------"
 			echo "Way to run a script"
 			echo "-----------------------------------------------------------------------------"

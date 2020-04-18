@@ -96,6 +96,11 @@ install_pypi_dependencies() {
 	pip install -r $1
 
 	if [ "$?" -eq 1 ]; then
+		echo "[Error] Error occurred while installing PyPi Dependencies... Reverting changes..."
+		local path=$( pwd )
+		cd ..; rm -rf $path
+		local virtual_env_name=$( basename "$path" )
+		echo "[Info] Successfully removed \"$virtual_env_name\" Virtual environment..."
 		exit 1
 	fi
 }

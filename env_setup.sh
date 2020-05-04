@@ -6,8 +6,8 @@ activate_env() {
 
 	echo "[Info] Activating environment..."
 
-	source $env_path > /dev/null 2>&1 
-	
+	source $env_path > /dev/null 2>&1
+
 	if [ "$?" != 0 ]; then
 		echo "[Error] Wrong Path is given: $env_path"
 		exit 1
@@ -23,16 +23,16 @@ create_env() {
 		if [ -n "$3" ]; then
 			local requirement_file=$3
 		else
-			local requirement_file="$dir/py2_requirements.txt" 
+			local requirement_file="$dir/py2_requirements.txt"
 		fi
 	else
 		if [ -n "$3" ]; then
 			local requirement_file=$3
 		else
-			local requirement_file="$dir/py3_requirements.txt" 
+			local requirement_file="$dir/py3_requirements.txt"
 		fi
 	fi
-	
+
 	echo "[Info] Creating environment..."
 	echo "[Info] virtualenv -p $python $2"
 
@@ -40,7 +40,7 @@ create_env() {
 
 	if [ "$?" != 0 ]; then
 		echo "[Error] Not able to find python executable... Exiting..."
-		exit 1	
+		exit 1
 	fi
 
 	cd $2
@@ -89,7 +89,7 @@ install_fork_dependencies() {
 
 	fi
 	cd ..
-} 
+}
 
 install_pypi_dependencies() {
 	echo "[Info] Installing PyPi Dependencies..."
@@ -113,9 +113,10 @@ add_elastica_packages_path() {
 
 	# Check whether OS is linux or not
 	cat /etc/os-release > /dev/null 2>&1
+    local os=$?
 
 	if [ -n "$USER" ]; then
-		if [ "$?" != 0 ]; then		# when OS is Mac
+		if [ "$os" -eq 1 ]; then		# when OS is Mac
 
 cat > $file_path << END_TEXT
 /Users/$USER/milkyway/common/auth_2fa
@@ -151,7 +152,7 @@ cat > $file_path << END_TEXT
 /home/madmin/milkyway/connectors
 /home/madmin/milkyway/apiserver
 END_TEXT
-	
+
 	fi
 }
 
@@ -192,7 +193,7 @@ while [ "$#" -gt 0 ]; do
 			echo "1- ./env_setup.sh -v <python_version> -p <virtual_env_path/name>"
 			echo "2- ./env_setup.sh -v <python_version> -p <virtual_env_path/name> -f <requirement_file_full_path>"
 			echo "-----------------------------------------------------------------------------"
-			exit 1	
+			exit 1
 	esac
 done
 

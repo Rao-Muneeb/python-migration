@@ -10,7 +10,7 @@ boto
 boto3
 botocore
 cachetools
-cefpython3
+cef==0.5
 celery
 certifi
 chardet
@@ -53,7 +53,7 @@ itsdangerous
 jaeger-client
 Jinja2
 jmespath
-kafka-python
+kafka-python==0.9.5
 kombu
 lexicon
 lxml

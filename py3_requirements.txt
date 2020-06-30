@@ -28,7 +28,7 @@ git+https://github.com/dimagi/django-digest.git@master#egg=django-digest
 django-globals==0.2.1
 django-mongodb-engine==0.6.0
 django-tastypie==0.12.2
-django-tastypie-nonrel==0.0.1
+git+https://github.com/andresdouglas/django-tastypie-nonrel.git@master#egg=django-tastypie-nonrel
 git+https://github.com/dcramer/django-uuidfield.git@master#egg=django-uuidfield
 djangotoolbox==1.8.0
 dnspython==1.16.0

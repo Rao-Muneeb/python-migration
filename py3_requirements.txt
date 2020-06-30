@@ -26,7 +26,7 @@ demjson==2.2.2
 diskcache==3.1.1
 git+https://github.com/dimagi/django-digest.git@master#egg=django-digest
 django-globals==0.2.1
-django-mongodb-engine==0.6.0
+django-mongodb-engine-py3==0.6.0.1
 django-tastypie==0.12.2
 git+https://github.com/andresdouglas/django-tastypie-nonrel.git@master#egg=django-tastypie-nonrel
 git+https://github.com/dcramer/django-uuidfield.git@master#egg=django-uuidfield

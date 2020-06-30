@@ -1,5 +1,5 @@
 amqp==1.4.9
-antlr4-python2-runtime==4.8
+antlr4-python3-runtime==4.8
 anyjson==0.3.3
 backports.os==0.1.1
 backports.ssl-match-hostname==3.7.0.1
@@ -24,12 +24,12 @@ decorator==3.4.0
 defusedxml==0.5.0
 demjson==2.2.2
 diskcache==3.1.1
-django-digest==1.14
+git+https://github.com/dimagi/django-digest.git@master#egg=django-digest
 django-globals==0.2.1
 django-mongodb-engine==0.6.0
 django-tastypie==0.12.2
 django-tastypie-nonrel==0.0.1
-django-uuidfield==0.5.0
+git+https://github.com/dcramer/django-uuidfield.git@master#egg=django-uuidfield
 djangotoolbox==1.8.0
 dnspython==1.16.0
 docutils==0.16
@@ -42,7 +42,7 @@ Flask-Classy==0.6.10
 flufl.enum==4.0.1
 future==0.18.2
 futures==3.0.5
-gdata==2.0.17
+gdata-python3==3.0.1
 geoip2==2.5.0
 google-api-python-client==1.7.6
 google-auth==1.6.1
@@ -58,7 +58,6 @@ itsdangerous==1.1.0
 jaeger-client==3.10.0
 Jinja2==2.7.1
 jmespath==0.10.0
-kafka-python==0.9.1
 kombu==3.0.33
 lexicon==0.2.0
 lxml==4.5.0
@@ -89,7 +88,7 @@ pymongo==3.8.0
 pyOpenSSL==0.13
 pyparsing==2.4.7
 python-dateutil==2.2
-python-digest==1.7
+git+https://github.com/dimagi/python-digest.git@master#egg=python-digest
 python-magic==0.4.10
 python-mimeparse==1.6.0
 pytz==2014.2

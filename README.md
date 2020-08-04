@@ -1,3 +1,16 @@
+## Repo Give-away
+This repo provides script in order to create python 2 or python 3 environment on the basis of requirements.txt file (only for a specific case)... This repo also possesses some python 2 and python 3 compatible libraries and these are,
+
+- cef (0.5)
+- pyes (0.99.6)
+- kafka (0.9.1)
+- djangotoolbox (1.8.0)
+- django-uuidfield (from git repo : https://github.com/dcramer/django-uuidfield)
+- django-digest (from git repo : https://github.com/dimagi/django-digest)
+- Django-nonrel (1.6.11) (from git repo : https://github.com/django-nonrel/django + with python 3.8 compatible - fixed python 3.8 issues)
+  - This can be cloned from repo : https://github.com/Rao-Muneeb/django-nonrel
+
+
 ## HOW TO RUN THE SCRIPT?
 
 `env_setup.sh` script can be executed as follows,
